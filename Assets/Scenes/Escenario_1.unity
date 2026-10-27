@@ -159,7 +159,7 @@ MonoBehaviour:
   - {fileID: 1153229727}
   - {fileID: 489455395}
   greenHousePrefab: {fileID: 7501731201110536792, guid: ff7cee782bf9b33439c1ca26ce357acb, type: 3}
-  redHousePrefab: {fileID: 1452533518336952562, guid: 545b34d79a108684aa72454a30c68159, type: 3}
+  redHousePrefab: {fileID: 3847583778502492768, guid: 8e8459c8ec1e5124382c645a3fe36ac9, type: 3}
   whiteHousePrefab: {fileID: 3847583778502492768, guid: fdbac88c2e4083a4287e143f57685d4d, type: 3}
 --- !u!4 &155273827
 Transform:
