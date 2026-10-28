@@ -125,6 +125,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63a449cd5209b1a4f95eaa90bcd737bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CasaVerde
+  interactionDistance: 10
+  interactionUIName: InteractionPrompt
 --- !u!1 &2881761941919294401
 GameObject:
   m_ObjectHideFlags: 0
