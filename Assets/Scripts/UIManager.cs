@@ -45,10 +45,6 @@ public class UIManager : MonoBehaviour
         SetInteractionProgress(0f);
         ShowInteractionBar(false);
 
-        // Ocultar el jumpscare.
-        if (jumpscareContainer != null)
-            jumpscareContainer.SetActive(false);
-
         // Las tres imágenes comienzan oscuras.
         foreach (Image candyImage in candyImages)
         {
