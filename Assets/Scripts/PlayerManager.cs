@@ -14,11 +14,23 @@ public class PlayerManager : MonoBehaviour
 
     [Header("UI")]
     [SerializeField] private UIManager uiManager;
+    [SerializeField] private GameObject interactionIndicator;
 
     private int currentPresses;
     private InteractableItem currentInteractable;
     private Coroutine resetCoroutine;
 
+
+    private void Update()
+    {
+        InteractableItem nearestItem = FindNearestInteractable();
+
+        // Mostrar la imagen si hay un objeto interactuable entro del rango del jugador
+        if (interactionIndicator != null)
+        {
+            interactionIndicator.SetActive(nearestItem != null);
+        }
+    }
     public void RegisterInteractionPress()
     {
         InteractableItem nearestItem = FindNearestInteractable();

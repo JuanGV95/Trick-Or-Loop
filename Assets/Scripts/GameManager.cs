@@ -87,7 +87,7 @@ public void RestartRound()
         if (playerController != null)
             playerController.enabled = false;
 
-        player.position = new Vector3(-30f,-2.7f,0); //modificar el vector para cualquier posicion
+        player.position = new Vector3(-30f,0,0); //modificar el vector para cualquier posicion
 
         // Reactiva el controlador para continuar el movimiento
         if (playerController != null)
