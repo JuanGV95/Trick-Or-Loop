@@ -23,14 +23,13 @@ public class PlayerController1 : MonoBehaviour
     [SerializeField] private float interactionRadius = 2f;
     [SerializeField] private LayerMask interactionLayer = ~0;
 
-    [Header("Door Interaction")]
-    [SerializeField] private int requiredPresses = 10;
-    [SerializeField] private float pressInterval = 0.5f;
+   
+   
 
     [Header("Player Manager")]
     [SerializeField] private PlayerManager playerManager;
 
-    private int currentPresses = 0;
+   
     private Coroutine pressResetCoroutine;
     private InteractableItem currentInteractable;
 

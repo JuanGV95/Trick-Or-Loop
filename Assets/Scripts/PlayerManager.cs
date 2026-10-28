@@ -12,6 +12,9 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private int requiredPresses = 10;
     [SerializeField] private float pressInterval = 0.5f;
 
+    [Header("UI")]
+    [SerializeField] private UIManager uiManager;
+
     private int currentPresses;
     private InteractableItem currentInteractable;
     private Coroutine resetCoroutine;
@@ -33,19 +36,9 @@ public class PlayerManager : MonoBehaviour
 
             currentInteractable = nearestItem;
 
-            // Identificar la casa desde el primer toque.
-            Debug.Log(
-                "Casa identificada: " +
-                currentInteractable.GetType().Name
-            );
         }
 
         currentPresses++;
-
-        Debug.Log(
-            $"Interacción con {currentInteractable.GetType().Name}: " +
-            $"{currentPresses}/{requiredPresses}"
-        );
 
         // Reiniciar el temporizador en cada pulsación.
         if (resetCoroutine != null)
@@ -53,6 +46,17 @@ public class PlayerManager : MonoBehaviour
             StopCoroutine(resetCoroutine);
         }
 
+        // Actualizar la barra de carga.
+        if (uiManager != null && requiredPresses > 0)
+        {
+            uiManager.ShowInteractionBar(true);
+
+            float progress = (float)currentPresses / requiredPresses;
+
+            uiManager.SetInteractionProgress(progress);
+        }
+
+        // Reiniciar el temporizador en cada pulsación.
         resetCoroutine = StartCoroutine(ResetAfterDelay());
 
         if (currentPresses >= requiredPresses)
@@ -93,7 +97,7 @@ public class PlayerManager : MonoBehaviour
                 nearestItem = item;
             }
         }
-
+         
         return nearestItem;
     }
 
@@ -116,13 +120,7 @@ public class PlayerManager : MonoBehaviour
 
         bool success = completedItem.TryCollect();
 
-        if (success)
-        {
-            Debug.Log(
-                "Interacción completada: " +
-                completedItem.GetType().Name
-            );
-        }
+
     }
 
     private IEnumerator ResetAfterDelay()
@@ -133,7 +131,7 @@ public class PlayerManager : MonoBehaviour
         currentInteractable = null;
         resetCoroutine = null;
 
-        Debug.Log("Tiempo agotado. Progreso reiniciado.");
+       
     }
 
     private void ResetInteraction()
@@ -143,6 +141,9 @@ public class PlayerManager : MonoBehaviour
             StopCoroutine(resetCoroutine);
             resetCoroutine = null;
         }
+
+        uiManager.SetInteractionProgress(0f);
+        uiManager.ShowInteractionBar(false);
 
         currentPresses = 0;
         currentInteractable = null;
