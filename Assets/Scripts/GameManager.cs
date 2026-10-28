@@ -1,11 +1,13 @@
 
+using System.Collections;
 using TMPro;
 using UnityEngine;
-using System.Collections;
+using UnityEngine.SceneManagement;
 
 
 public class GameManager : MonoBehaviour
 {
+    //instancia para poder acceder a el script globalmente (singleton)
     public static GameManager Instance { get; private set; }
 
     [Header("Game Settings")]
@@ -19,12 +21,16 @@ public class GameManager : MonoBehaviour
     [Header("Pista")]
     [SerializeField] private TextMeshProUGUI textoPista;
 
+    [SerializeField] private UIManager uiManager;
+
+    //poder acceder a la variable globalmente
     public int CandyCount { get; private set; }
     public bool IsGameWon { get; private set; }
     public bool IsRestarting { get; private set; }
 
     private void Awake()
     {
+        // Evita tener mas de un GameManager activo
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -36,17 +42,19 @@ public class GameManager : MonoBehaviour
 
     public void CollectCandy()
     {
+
         if (IsGameWon || IsRestarting)
             return;
 
         CandyCount++;
 
-        Debug.Log($"Dulces: {CandyCount}/{pointsToWin}");
+        if (uiManager != null)
+            uiManager.UpdateCandyUI(CandyCount);
 
         if (CandyCount >= pointsToWin)
         {
             IsGameWon = true;
-            Debug.Log("¡Has ganado la partida!");
+            SceneManager.LoadScene("Victory");
         }
     }
 
@@ -58,37 +66,28 @@ public void RestartRound()
     IsRestarting = true;
     CandyCount = 0;
 
-    if (houseGenerator == null)
-    {
-        Debug.LogError("HouseGenerator no está asignado.");
-        IsRestarting = false;
-        return;
-    }
+        uiManager.ShowJumpscare();
 
-    ResetPlayerPosition();
+        // Reinicia al jugador y genera una nueva ronda.
+        ResetPlayerPosition();
 
     houseGenerator.GenerateHouses();
 
     IsRestarting = false;
 
-    Debug.Log("Nueva ronda: casas regeneradas y jugador reiniciado.");
+    
 }
 
     private void ResetPlayerPosition()
     {
-        if (player == null)
-        {
-            Debug.LogError("Player no está asignado en el GameManager.");
-            return;
-        }
 
-       
+        // Desactiva el controlador para evitar conflictos al cambiar la posicion
         if (playerController != null)
             playerController.enabled = false;
 
-        player.position = Vector3.zero;
+        player.position = new Vector3(-30f,-2.7f,0); //modificar el vector para cualquier posicion
 
-        
+        // Reactiva el controlador para continuar el movimiento
         if (playerController != null)
             playerController.enabled = true;
 
@@ -97,7 +96,7 @@ public void RestartRound()
 
     public void Pista()
     {
-        if (textoPista == null) return;
+     
 
         StopAllCoroutines();
         StartCoroutine(MostrarPista());
@@ -105,6 +104,7 @@ public void RestartRound()
 
     private IEnumerator MostrarPista()
     {
+        // Muestra la pista durante tres segundos
         textoPista.gameObject.SetActive(true);
 
         yield return new WaitForSeconds(3f);
@@ -114,6 +114,7 @@ public void RestartRound()
 
     public void ResetGame()
     {
+        // Restablece el progreso y el estado de la partida
         CandyCount = 0;
         IsGameWon = false;
         IsRestarting = false;

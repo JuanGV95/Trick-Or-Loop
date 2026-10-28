@@ -12,6 +12,7 @@ public class HouseSpawner: MonoBehaviour
     [SerializeField] private GameObject redHousePrefab;
     [SerializeField] private GameObject whiteHousePrefab;
 
+    // Guarda las casas creadas para eliminarlas al generar una nueva ronda
     private readonly List<GameObject> spawnedHouses = new List<GameObject>();
 
     private void Start()
@@ -21,7 +22,7 @@ public class HouseSpawner: MonoBehaviour
 
     public void GenerateHouses()
     {
-        
+        // Elimina las casas de la ronda anterior
         foreach (GameObject house in spawnedHouses)
         {
             if (house != null)
@@ -30,38 +31,14 @@ public class HouseSpawner: MonoBehaviour
 
         spawnedHouses.Clear();
 
-        if (spawners == null || spawners.Length != 8)
-        {
-            Debug.LogError("You must assign exactly 8 spawners.");
-            return;
-        }
-
-        if (greenHousePrefab == null ||
-            redHousePrefab == null ||
-            whiteHousePrefab == null)
-        {
-            Debug.LogError("Assign all three house prefabs.");
-            return;
-        }
-
-        foreach (Transform spawner in spawners)
-        {
-            if (spawner == null)
-            {
-                Debug.LogError("A spawner has not been assigned.");
-                return;
-            }
-        }
-
-        
+        // Define la cantidad aleatoria de casas rojas y verdes
         int redCount = Random.Range(2, 5); 
-
-       
         int greenCount = Random.Range(3, 8 - redCount);
 
-        
+        // Completa las ocho casas con las casas blancas restantes
         int whiteCount = 8 - redCount - greenCount;
 
+        // Crea una lista con los prefabs segun las cantidades elegidas
         List<GameObject> housePool = new List<GameObject>();
 
         for (int i = 0; i < greenCount; i++)
@@ -73,7 +50,7 @@ public class HouseSpawner: MonoBehaviour
         for (int i = 0; i < whiteCount; i++)
             housePool.Add(whiteHousePrefab);
 
-        
+        // Mezcla aleatoriamente las casas para distribuir los colores
         for (int i = housePool.Count - 1; i > 0; i--)
         {
             int j = Random.Range(0, i + 1);
@@ -97,9 +74,6 @@ public class HouseSpawner: MonoBehaviour
             spawnedHouses.Add(house);
         }
 
-        Debug.Log(
-            $"Generation complete: {greenCount} green, " +
-            $"{redCount} red, {whiteCount} white."
-        );
+        
     }
 }
