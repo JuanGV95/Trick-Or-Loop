@@ -31,7 +31,7 @@ public class MainMenu : MonoBehaviour
 
     public void IniciarJuego()
     {
-        SceneManager.LoadScene("GameOver");
+        SceneManager.LoadScene("Escenario_1");
     }
 
     public void AbrirInstrucciones()

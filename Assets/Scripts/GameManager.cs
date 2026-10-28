@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Transform player;
 
     [Header("Pista")]
-    [SerializeField] private TextMeshProUGUI textoPista;
+    [SerializeField] private GameObject textoPista;
 
     [SerializeField] private UIManager uiManager;
 
@@ -72,8 +72,10 @@ public void RestartRound()
         ResetPlayerPosition();
 
     houseGenerator.GenerateHouses();
+        uiManager.InitializeUI();
 
-    IsRestarting = false;
+
+        IsRestarting = false;
 
     
 }
@@ -105,11 +107,11 @@ public void RestartRound()
     private IEnumerator MostrarPista()
     {
         // Muestra la pista durante tres segundos
-        textoPista.gameObject.SetActive(true);
+        textoPista.SetActive(true);
 
         yield return new WaitForSeconds(3f);
 
-        textoPista.gameObject.SetActive(false);
+        textoPista.SetActive(false);
     }
 
     public void ResetGame()
