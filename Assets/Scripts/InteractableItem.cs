@@ -12,7 +12,6 @@ public abstract class InteractableItem : MonoBehaviour
     {
         if (hasInteracted)
         {
-            Debug.Log("Esta casa ya fue utilizada: " + name);
             return false;
         }
 

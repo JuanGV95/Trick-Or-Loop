@@ -29,10 +29,11 @@ Transform:
   m_GameObject: {fileID: 7501731201110536792}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.08, y: 8.4, z: 43.01}
-  m_LocalScale: {x: 5.311425, y: 5.311425, z: 5.311425}
+  m_LocalPosition: {x: 0, y: -2, z: 0}
+  m_LocalScale: {x: 1.8, y: 1.8, z: 1.8}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2240157234951786793}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4126172527509148623
@@ -50,7 +51,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7501731201110536792}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -125,3 +126,65 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63a449cd5209b1a4f95eaa90bcd737bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CasaVerde
+--- !u!1001 &1683488207863745713
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6973829780620366008}
+    m_Modifications:
+    - target: {fileID: 216595086814070562, guid: 4fe42e6ad85a28a479cf663405176fde, type: 3}
+      propertyPath: m_Name
+      value: Casa_06_Brujeria
+      objectReference: {fileID: 0}
+    - target: {fileID: 597378659889028504, guid: 4fe42e6ad85a28a479cf663405176fde, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 597378659889028504, guid: 4fe42e6ad85a28a479cf663405176fde, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 597378659889028504, guid: 4fe42e6ad85a28a479cf663405176fde, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 597378659889028504, guid: 4fe42e6ad85a28a479cf663405176fde, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 597378659889028504, guid: 4fe42e6ad85a28a479cf663405176fde, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 597378659889028504, guid: 4fe42e6ad85a28a479cf663405176fde, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 597378659889028504, guid: 4fe42e6ad85a28a479cf663405176fde, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 597378659889028504, guid: 4fe42e6ad85a28a479cf663405176fde, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 597378659889028504, guid: 4fe42e6ad85a28a479cf663405176fde, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 597378659889028504, guid: 4fe42e6ad85a28a479cf663405176fde, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4fe42e6ad85a28a479cf663405176fde, type: 3}
+--- !u!4 &2240157234951786793 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 597378659889028504, guid: 4fe42e6ad85a28a479cf663405176fde, type: 3}
+  m_PrefabInstance: {fileID: 1683488207863745713}
+  m_PrefabAsset: {fileID: 0}
