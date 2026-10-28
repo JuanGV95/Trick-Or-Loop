@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 
 public static class BuildHorrorTreeBoundary
 {
-    private const string OutputFolder = "Assets/Prefabs/TreeBoundary";
+    private const string OutputFolder = "Assets/Prefabs/Environment/TreeBoundary";
     private const string MaterialsFolder = OutputFolder + "/Materials";
     private const string BoundaryPath = OutputFolder + "/TreeBoundary_Horror.prefab";
 
