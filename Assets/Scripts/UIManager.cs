@@ -33,15 +33,11 @@ public class UIManager : MonoBehaviour
     {
         InitializeUI();
 
-        // Las tres imágenes comienzan oscuras.
-        foreach (Image candyImage in candyImages)
-        {
-            if (candyImage != null)
-                candyImage.sprite = darkCandySprite;
-        }
+       
+  
     }
 
-    private void InitializeUI()
+    public void InitializeUI()
     {
 ;
 
@@ -53,7 +49,14 @@ public class UIManager : MonoBehaviour
         if (jumpscareContainer != null)
             jumpscareContainer.SetActive(false);
 
-   
+        // Las tres imágenes comienzan oscuras.
+        foreach (Image candyImage in candyImages)
+        {
+            if (candyImage != null)
+                candyImage.sprite = darkCandySprite;
+        }
+
+
     }
 
     // =========================
