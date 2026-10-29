@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< Updated upstream:Assets/AssetsDescargados.meta
 guid: 9aeecc86593f18c4094588da11ecf30b
+========
+guid: a0de7adb8317b2847b1877c0945471b1
+>>>>>>>> Stashed changes:Assets/Prefabs/Candies.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
